@@ -1,5 +1,4 @@
 import React, { FC, useState, useEffect, useRef } from 'react';
-// FIX: Changed import to be a relative path.
 import { User, RecentItem } from '../../types';
 import { supabase } from '../../supabaseClient';
 import Icon from '../shared/Icon';
