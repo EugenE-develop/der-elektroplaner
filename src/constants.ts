@@ -1,4 +1,3 @@
-// FIX: Changed import to be a relative path.
 import { Leistungsphase, UserRole } from './types';
 
 export const USER_ROLES: UserRole[] = ['Geschäftsführung', 'Leitung', 'Projektleiter', 'Systemplaner', 'Admin', 'Büro'];

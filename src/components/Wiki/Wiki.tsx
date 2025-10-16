@@ -283,7 +283,6 @@ const Wiki: FC<WikiProps> = ({ selectedArticleId }) => {
         });
     };
 
-    // FIX: Implemented AI search and article creation functionality.
     const handleAiSearch = async () => {
         if (!aiSearchQuery.trim()) return;
     
@@ -306,7 +305,6 @@ const Wiki: FC<WikiProps> = ({ selectedArticleId }) => {
                 ?.map((chunk: any) => chunk.web)
                 .filter((web: any) => web?.uri) || [];
     
-            // FIX: Replaced unsafe type cast with a robust mapping function to guarantee string properties.
             const uniqueSources = Array.from(new Map(sources.map((item: any) => [item.uri, item])).values())
                 .map((source: any) => {
                     const uri = String(source?.uri || '');

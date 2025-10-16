@@ -1,6 +1,4 @@
-
 import React, { FC, useState, useMemo, useEffect, useRef } from 'react';
-// FIX: Changed import to be a relative path.
 import { Project, ProjectStatus } from '../../types';
 import { GoogleGenAI } from "@google/genai";
 import { formatCurrency } from '../../utils';

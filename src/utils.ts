@@ -1,4 +1,3 @@
-// FIX: Changed import to be a relative path.
 import { Theme, AppearanceSettings } from './types';
 
 export const formatCurrency = (value: number): string => {
