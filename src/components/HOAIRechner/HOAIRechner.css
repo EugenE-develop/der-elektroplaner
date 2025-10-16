@@ -1,0 +1,9 @@
+/* --- HOAI Specific --- */
+.leistungsphasen-container { margin-top: 1rem; }
+.leistungsphasen-container h3 { font-weight: 600; margin-bottom: 1rem; }
+.leistungsphasen-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; }
+.lp-item { display: flex; align-items: center; background-color: var(--background-color); padding: 0.75rem; border-radius: 4px; cursor: pointer; transition: background-color 0.2s; user-select: none; }
+.lp-item:hover { background-color: #e9ecef; }
+.lp-item input[type="checkbox"] { margin-right: 0.75rem; width: 18px; height: 18px; accent-color: var(--primary-color); }
+.lp-item label { flex-grow: 1; }
+.lp-item span { font-weight: 500; color: var(--text-light-color); }

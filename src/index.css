@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: 0 82 204; /* #0052cc */
+  --color-primary-hover: 0 65 163; /* #0041a3 */
+  --secondary-color: #f4f5f7;
+  --secondary-hover-color: #e9eaec;
+  --border-color: #dfe1e6;
+  --text-color: #172b4d;
+  --text-light-color: #5e6c84;
+  --text-on-dark-bg: #ffffff;
+  --background-color: #f4f5f7;
+  --card-background-color: #ffffff;
+  --header-background-color: #172b4d;
+  --footer-background-color: #f4f5f7;
+  --success-color: #00875a;
+  --danger-color: #de350b;
+  --font-family: 'Inter', sans-serif;
+  --font-size-base: 1rem;
+  --layout-density-multiplier: 1;
+  scroll-padding-top: 8rem;
+  scroll-behavior: smooth;
+}
+
+html {
+  font-size: var(--font-size-base);
+}
+
+.dark {
+  --color-primary: 79 132 255; /* A lighter blue for dark mode */
+  --color-primary-hover: 110 157 255;
+  --secondary-color: #374151; /* gray-700 */
+  --secondary-hover-color: #4B5563; /* gray-600 */
+  --border-color: #4B5563; /* gray-600 */
+  --text-color: #F3F4F6; /* gray-100 */
+  --text-light-color: #9CA3AF; /* gray-400 */
+  --background-color: #111827; /* gray-900 */
+  --card-background-color: #1F2937; /* gray-800 */
+  --header-background-color: #1F2937;
+  --footer-background-color: #1F2937;
+  --success-color: #10B981; /* emerald-500 */
+  --danger-color: #F87171; /* red-400 */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--background-color);
+  color: var(--text-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  word-break: break-word;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-error {
+  border-color: var(--danger-color) !important;
+}
+
+/* --- Print Styles --- */
+@media print {
+  body {
+    background-color: #fff;
+    color: #000;
+  }
+  .print-hidden {
+    display: none !important;
+  }
+}
+
+/* Custom Loading Animation */
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}

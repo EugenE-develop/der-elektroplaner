@@ -1,0 +1,121 @@
+.angebote-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.angebote-container h3 {
+    font-weight: 600;
+    margin-bottom: 0;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.angebote-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fafbfc;
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+.summary-item {
+    display: flex;
+    flex-direction: column;
+}
+.summary-item span {
+    font-size: 0.9rem;
+    color: var(--text-light-color);
+    margin-bottom: 0.25rem;
+}
+.summary-item strong {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: rgb(var(--color-primary));
+}
+
+.angebote-table-container {
+    overflow-x: auto;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.angebote-table {
+    width: 100%;
+    min-width: 600px;
+    border-collapse: collapse;
+}
+
+.angebote-table th, .angebote-table td {
+    padding: 0.85rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.angebote-table th {
+    background-color: #fafbfc;
+    font-weight: 600;
+}
+.dark .angebote-table th {
+    background-color: #1f2937;
+}
+
+.angebote-table tbody tr:last-child td {
+    border-bottom: none;
+}
+.angebote-table tbody tr:hover {
+    background-color: var(--secondary-color);
+}
+
+.status-pill {
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    color: white;
+    white-space: nowrap;
+}
+.status-eingegangen { background-color: var(--text-light-color); }
+.status-in-pruefung { background-color: #ffab00; }
+.status-beauftragt { background-color: var(--success-color); }
+.status-abgelehnt { background-color: var(--danger-color); }
+
+.action-buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+.action-buttons button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: rgb(var(--color-primary));
+    font-weight: 500;
+    padding: 0.25rem;
+}
+.action-buttons button:last-child {
+    color: var(--danger-color);
+}
+
+.file-attachment-icon {
+    margin-left: 0.5rem;
+    cursor: help;
+    opacity: 0.7;
+}
+
+/* Modal form adjustments */
+.modal-content .form-grid-inputs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.file-name-display {
+    font-size: 0.8rem;
+    color: var(--text-light-color);
+    margin-top: 0.75rem;
+    font-style: italic;
+}

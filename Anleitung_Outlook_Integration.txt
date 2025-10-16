@@ -1,0 +1,113 @@
+======================================================================
+ ANLEITUNG ZUR INTEGRATION DES OUTLOOK-KALENDERS
+======================================================================
+
+Dieses Dokument beschreibt die notwendigen Schritte, um die Outlook-Kalender-Integration
+in der HOAI Planer Pro Anwendung einzurichten. Es ist in zwei Abschnitte unterteilt:
+
+1. ANLEITUNG FÜR ADMINISTRATOREN: Technische Einrichtung der Schnittstelle.
+2. ANLEITUNG FÜR ENDNUTZER: Wie ein Benutzer seinen Kalender verbindet.
+
+---
+
+### 1. ANLEITUNG FÜR ADMINISTRATOREN (TECHNISCHE EINRICHTUNG) ###
+
+Die sichere Verbindung zu Microsoft 365 (Outlook) erfolgt über das OAuth 2.0-Protokoll.
+Die Einrichtung erfordert Konfigurationsschritte im Microsoft Azure Portal und die
+Implementierung von serverseitiger Logik (am besten über Supabase Edge Functions).
+
+**PHASE 1: APP-REGISTRIERUNG IM MICROSOFT AZURE PORTAL**
+
+1.  **Azure Portal aufrufen:** Melden Sie sich mit Ihrem Microsoft-Administratorkonto im
+    Azure Portal an: https://portal.azure.com
+
+2.  **App-Registrierung:** Suchen Sie nach dem Dienst "App registrations" (App-Registrierungen)
+    und wählen Sie ihn aus.
+
+3.  **Neue Registrierung:** Klicken Sie auf "+ New registration".
+    *   **Name:** Geben Sie einen aussagekräftigen Namen ein (z.B. "HOAI Planer Pro Integration").
+    *   **Unterstützte Kontotypen:** Wählen Sie "Accounts in any organizational directory
+        (Any Azure AD directory - Multitenant) and personal Microsoft accounts
+        (e.g. Skype, Xbox)".
+    *   **Redirect URI (Wichtig!):** Dies ist die URL, zu der Microsoft den Benutzer
+        nach erfolgreicher Anmeldung zurückleitet.
+        - Plattform: "Web"
+        - URL: https://<IHR-PROJEKT-REF>.supabase.co/functions/v1/outlook-callback
+          (Ersetzen Sie <IHR-PROJEKT-REF> durch Ihre Supabase Projekt-Referenz)
+
+4.  **Anmeldeinformationen abrufen:**
+    *   Nach der Registrierung wird die **Application (client) ID** angezeigt. Kopieren
+        und speichern Sie diese sicher.
+    *   Navigieren Sie zum Menüpunkt "Certificates & secrets". Erstellen Sie einen
+        **New client secret**.
+    *   **WICHTIG:** Kopieren Sie den Wert des Client Secrets *sofort*. Er wird nur einmal
+        angezeigt und muss absolut sicher aufbewahrt werden.
+
+5.  **API-Berechtigungen festlegen:**
+    *   Gehen Sie zu "API permissions".
+    *   Klicken Sie auf "+ Add a permission" -> "Microsoft Graph" -> "Delegated permissions".
+    *   Suchen und aktivieren Sie die Berechtigung `Calendars.ReadWrite`.
+    *   Klicken Sie auf "Add permissions".
+
+**PHASE 2: SICHERE SPEICHERUNG DER ANMELDEINFORMATIONEN IN SUPABASE**
+
+Speichern Sie die Client ID und das Client Secret *niemals* im Frontend-Code!
+
+1.  Gehen Sie zu Ihrem Supabase-Projekt -> "Edge Functions".
+2.  Unter "Settings" können Sie "Secrets" hinzufügen.
+3.  Erstellen Sie zwei Secrets:
+    *   `OUTLOOK_CLIENT_ID` mit der kopierten Client ID.
+    *   `OUTLOOK_CLIENT_SECRET` mit dem kopierten Client Secret.
+
+**PHASE 3: IMPLEMENTIERUNG DER SUPABASE EDGE FUNCTIONS**
+
+Sie benötigen zwei serverseitige Funktionen, um den OAuth-Flow abzuwickeln.
+
+1.  **`outlook-connect` Function:**
+    *   Wird vom "Verbinden"-Button im Frontend aufgerufen.
+    *   Erstellt die Microsoft-Autorisierungs-URL mit den Secrets und der Redirect URI.
+    *   Gibt diese URL an das Frontend zurück, das den Benutzer dorthin weiterleitet.
+
+2.  **`outlook-callback` Function:**
+    *   Wird von Microsoft nach der Benutzer-Zustimmung aufgerufen.
+    *   Empfängt einen `authorization_code`.
+    *   Tauscht diesen Code gegen ein `access_token` und `refresh_token` bei Microsoft ein.
+    *   **WICHTIG:** Speichert diese Tokens sicher in einer neuen Datenbanktabelle und
+        ordnet sie der Supabase `user_id` zu. Dies ermöglicht den späteren Zugriff
+        auf den Kalender.
+
+**PHASE 4: FRONTEND-ANPASSUNG**
+
+Die Platzhalter-Funktionen `handleOutlookConnect` und `handleOutlookDisconnect` in der
+`Settings.tsx` Komponente müssen nun die entsprechenden Edge Functions aufrufen.
+
+---
+
+### 2. ANLEITUNG FÜR ENDNUTZER (KALENDER VERKNÜPFEN) ###
+
+Sobald die technische Einrichtung abgeschlossen ist, ist der Prozess für die Nutzer
+sehr einfach.
+
+**SCHRITT-FÜR-SCHRITT: SO VERBINDEN SIE IHREN OUTLOOK-KALENDER**
+
+1.  **Einstellungen öffnen:** Navigieren Sie in der Anwendung zu Ihrem Profilbild oder
+    Namen und klicken Sie auf "Einstellungen".
+
+2.  **Verbundene Konten finden:** Scrollen Sie zum Abschnitt "Verbundene Konten".
+
+3.  **Verbindung starten:** Neben "Outlook Kalender" sehen Sie den Status "Nicht verbunden".
+    Klicken Sie auf den Button **"Verbinden"**.
+
+4.  **Bei Microsoft anmelden:** Sie werden automatisch zu einer sicheren Anmeldeseite von
+    Microsoft weitergeleitet. Die Anwendung sieht Ihr Passwort zu keinem Zeitpunkt.
+
+5.  **Zustimmung erteilen:** Melden Sie sich mit Ihrem Microsoft-Konto an. Microsoft wird
+    Sie fragen, ob Sie der Anwendung erlauben möchten, auf Ihre Kalenderdaten
+    zuzugreifen. Überprüfen Sie die Berechtigungen und klicken Sie auf **"Akzeptieren"**.
+
+6.  **Fertig!** Sie werden automatisch zur Einstellungsseite zurückgeleitet. Der Status
+    für den Outlook Kalender sollte nun auf "Verbunden" stehen und Ihre E-Mail-Adresse
+    anzeigen.
+
+Um die Verbindung wieder zu trennen, können Sie jederzeit auf derselben Seite auf den
+"Trennen"-Button klicken.

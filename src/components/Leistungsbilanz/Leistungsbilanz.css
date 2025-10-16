@@ -1,0 +1,144 @@
+/* --- Leistungsbilanz Specific --- */
+.verteilung-card {
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  background-color: var(--secondary-color);
+}
+.dark .verteilung-card {
+    background-color: #1f2937;
+}
+.verteilung-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 1rem;
+}
+.verteilung-title-input {
+  font-size: 1.25rem;
+  font-weight: 600;
+  border: none;
+  background: transparent;
+  width: 100%;
+  padding: 0.25rem;
+  color: var(--text-color);
+}
+.verteilung-title-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgb(var(--color-primary) / 0.2);
+    border-radius: 4px;
+}
+.btn-remove-verteilung {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: var(--text-light-color);
+  cursor: pointer;
+  line-height: 1;
+  padding: 0 0.5rem;
+  transition: color 0.2s;
+}
+.btn-remove-verteilung:hover { color: var(--danger-color); }
+
+.verbraucher-table-container {
+    overflow-x: auto;
+    margin-top: 2rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+/* Visual cue for horizontal scrolling on touch devices */
+@media (hover: none) {
+    .verbraucher-table-container {
+        box-shadow: inset -10px 0 8px -8px rgba(0,0,0,0.1);
+    }
+}
+
+
+.verbraucher-table {
+  width: 100%;
+  min-width: 800px; /* Force scroll on smaller screens */
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+.verbraucher-table th, .verbraucher-table td {
+  padding: 0.75rem;
+  text-align: left;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.verbraucher-table th {
+  color: var(--text-light-color);
+  font-weight: 500;
+  border-bottom: 2px solid var(--border-color);
+  background-color: var(--secondary-color);
+}
+.dark .verbraucher-table th {
+    background-color: #1f2937;
+}
+.verbraucher-table td {
+  border-bottom: 1px solid var(--border-color);
+}
+.verbraucher-table tbody tr:last-child td {
+    border-bottom: none;
+}
+.verbraucher-table input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background-color: var(--secondary-color);
+  font-size: 0.9rem;
+  text-align: right;
+  color: var(--text-color);
+}
+.verbraucher-table input[type="text"] { text-align: left; }
+.verbraucher-table input:focus {
+  background-color: var(--card-background-color);
+  border-color: rgb(var(--color-primary));
+  outline: none;
+}
+.verbraucher-table .calculated-cell {
+  font-weight: 500;
+  text-align: right;
+  padding-right: 0.75rem;
+}
+.verbraucher-table tfoot th {
+  font-weight: 600;
+  color: var(--text-color);
+  text-align: right;
+  border-top: 2px solid var(--border-color);
+}
+.verbraucher-table tfoot th:first-child { text-align: left; }
+
+.btn-remove-row {
+  background: var(--secondary-color);
+  color: var(--danger-color);
+  border: none;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-remove-row:hover { background-color: var(--danger-color); color: white; }
+
+.btn-add-row {
+  margin-top: 1rem;
+}
+.leistungsbilanz-results {
+    margin-top: 1.5rem;
+}
+.leistungsbilanz-results .result-item-value {
+    font-size: 1.1rem;
+}
+.leistungsbilanz-results .result-item.total .result-item-value {
+    font-size: 1.3rem;
+}

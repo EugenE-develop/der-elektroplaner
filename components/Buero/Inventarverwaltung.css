@@ -1,0 +1,35 @@
+.table-container {
+    overflow-x: auto;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.responsive-table {
+    width: 100%;
+    min-width: 600px;
+    border-collapse: collapse;
+}
+
+.responsive-table th,
+.responsive-table td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+    white-space: nowrap;
+}
+
+.responsive-table th {
+    background-color: #fafbfc;
+    font-weight: 600;
+}
+.dark .responsive-table th {
+    background-color: #1f2937;
+}
+
+.responsive-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.responsive-table tbody tr:hover {
+    background-color: var(--secondary-hover-color);
+}

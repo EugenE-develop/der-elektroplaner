@@ -1,0 +1,55 @@
+/* Finance.css */
+
+.finance-kpi-card {
+    background-color: var(--card-background-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    border: 1px solid var(--border-color);
+}
+.finance-kpi-card h3 {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-light-color);
+}
+.finance-kpi-card .value {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-top: 0.25rem;
+}
+.finance-kpi-card .sub-value {
+    font-size: 0.75rem;
+    color: var(--text-light-color);
+    margin-top: 0.25rem;
+}
+
+
+/* Print Preview Styles */
+@media print {
+    body, html {
+        background: #fff;
+    }
+    #root > div:not(.print-preview-container), .print-hidden {
+        display: none !important;
+    }
+    .print-preview-container {
+        display: block !important;
+        position: static !important;
+        width: 100% !important;
+        height: auto !important;
+        box-shadow: none !important;
+        border: none !important;
+    }
+    .print-page {
+        box-shadow: none !important;
+        border: none !important;
+        margin: 0 !important;
+        width: 100% !important;
+        height: auto !important;
+        page-break-after: always;
+    }
+    @page {
+        size: A4;
+        margin: 2cm;
+    }
+}

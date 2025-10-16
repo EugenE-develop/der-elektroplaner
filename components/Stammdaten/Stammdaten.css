@@ -1,0 +1,72 @@
+/* components/Stammdaten/Stammdaten.css */
+
+.stammdaten-editor {
+    /* General container styles for editors within the Stammdaten page */
+}
+
+/* New styles for ChecklistTemplateEditor */
+.checklist-editor-layout {
+    display: flex;
+    gap: 1.5rem;
+    min-height: 400px;
+}
+
+.checklist-editor-list {
+    flex: 0 0 250px;
+    border-right: 1px solid var(--border-color);
+    padding-right: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.checklist-editor-list-items {
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-top: 1rem;
+}
+
+.checklist-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    border-radius: 4px;
+    text-align: left;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+.checklist-list-item:hover {
+    background-color: var(--secondary-hover-color);
+}
+.checklist-list-item.active {
+    background-color: rgb(var(--color-primary) / 0.1);
+    color: rgb(var(--color-primary));
+    font-weight: 500;
+    border-color: rgb(var(--color-primary) / 0.3);
+}
+
+.checklist-list-item .delete-btn {
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+.checklist-list-item:hover .delete-btn {
+    visibility: visible;
+    opacity: 1;
+}
+
+.checklist-editor-main {
+    flex-grow: 1;
+}
+
+.checklist-item-editor {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0;
+}
+.checklist-item-editor input {
+    flex-grow: 1;
+}

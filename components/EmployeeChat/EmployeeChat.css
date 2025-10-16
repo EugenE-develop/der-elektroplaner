@@ -1,0 +1,123 @@
+/* Employee Chat Styles */
+.employee-chat-container { 
+    display: flex; 
+    flex-direction: row; 
+    position: fixed; 
+    bottom: 24px; 
+    right: 24px; 
+    width: 90vw; 
+    max-width: 700px; 
+    height: 70vh; 
+    max-height: 600px; 
+    background-color: var(--card-background-color); 
+    border-radius: 12px; 
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); 
+    border: 1px solid var(--border-color); 
+    z-index: 40; 
+    overflow: hidden; 
+    transform-origin: bottom right; 
+    animation: slide-in 0.3s ease-out; 
+}
+.chat-sidebar { 
+    width: 35%; 
+    min-width: 200px; 
+    background-color: #f8f9fa; 
+    border-right: 1px solid var(--border-color); 
+    display: flex; 
+    flex-direction: column; 
+}
+.dark .chat-sidebar {
+    background-color: #111827; /* gray-900 */
+}
+.chat-main { 
+    width: 65%; 
+    display: flex; 
+    flex-direction: column; 
+}
+.room-list { 
+    flex-grow: 1; 
+    overflow-y: auto; 
+    padding: 0.5rem; 
+}
+.room-list-item { 
+    width: 100%; 
+    text-align: left; 
+    padding: 0.65rem 0.75rem; 
+    border-radius: 6px; 
+    font-size: 0.9rem; 
+    font-weight: 500; 
+    transition: background-color 0.2s, color 0.2s; 
+    border: none; 
+    background: none; 
+    cursor: pointer; 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+}
+.room-list-item.selected { 
+    background-color: rgb(var(--color-primary) / 0.15); 
+    color: rgb(var(--color-primary)); 
+}
+.room-list-item:not(.selected):hover { 
+    background-color: var(--secondary-hover-color); 
+}
+.sidebar-footer { 
+    padding: 0.5rem; 
+    border-top: 1px solid var(--border-color); 
+}
+.btn-new-room { 
+    width: 100%; 
+    padding: 0.65rem; 
+    border: none; 
+    background-color: transparent; 
+    border-radius: 6px; 
+    font-weight: 500; 
+    cursor: pointer; 
+    transition: background-color 0.2s; 
+}
+.btn-new-room:hover { 
+    background-color: var(--secondary-hover-color); 
+}
+.chat-welcome-view { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    height: 100%; 
+    text-align: center; 
+    padding: 2rem; 
+    color: var(--text-light-color); 
+    position: relative; 
+}
+.chat-welcome-view h3 { 
+    font-size: 1.25rem; 
+    font-weight: 600; 
+    color: var(--text-color); 
+    margin-bottom: 0.5rem; 
+}
+
+/* Mobile optimization */
+@media (max-width: 768px) {
+    .employee-chat-container {
+        width: 100%;
+        height: 100%;
+        max-width: 100vw;
+        max-height: 100vh;
+        bottom: 0;
+        right: 0;
+        border-radius: 0;
+        border: none;
+        flex-direction: column;
+    }
+    .chat-sidebar {
+        width: 100%;
+        height: 40%;
+        min-width: 0;
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+    }
+    .chat-main {
+        width: 100%;
+        height: 60%;
+    }
+}

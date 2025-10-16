@@ -1,0 +1,73 @@
+.schematics-container {
+    /* Main container styling */
+}
+
+.upload-area {
+    border: 2px dashed var(--border-color);
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.2s ease-in-out;
+}
+.upload-area.drag-over {
+    border-color: rgb(var(--color-primary));
+    background-color: rgba(var(--color-primary), 0.05);
+}
+
+.file-list-area {
+    background-color: var(--card-background-color);
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.file-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.file-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+.file-item:hover {
+    background-color: var(--secondary-color);
+}
+
+.file-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-width: 0; /* Important for truncation */
+}
+
+.delete-button {
+    text-align: right;
+    color: var(--danger-color);
+    font-size: 0.8rem;
+    font-weight: 500;
+    background: none;
+    border: none;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.file-item:hover .delete-button {
+    opacity: 1;
+}
+
+.empty-list-message {
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--text-light-color);
+    padding: 2rem 0;
+}

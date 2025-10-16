@@ -1,0 +1,121 @@
+.brandschutz-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.brandschutz-container h3 {
+    font-weight: 600;
+    margin-bottom: 0;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.upload-section, .document-list-section {
+    background-color: #fafbfc;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+.upload-section h4, .document-list-section h4 {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.upload-section p {
+    font-size: 0.9rem;
+    color: var(--text-light-color);
+    margin-bottom: 1rem;
+}
+
+.file-input {
+    font-family: var(--font-family);
+    font-size: 0.95rem;
+}
+
+.spinner-inline {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 1rem;
+    border: 3px solid var(--secondary-color);
+    border-top: 3px solid var(--primary-color);
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    animation: spin 1s linear infinite;
+}
+
+.document-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.document-item-simple {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    background-color: var(--card-background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+.doc-icon {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    color: white;
+}
+.doc-icon-pdf { background-color: #d9534f; }
+.doc-icon-dwg { background-color: #5bc0de; }
+
+/* Accordion Styles */
+.bs-accordion {
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: var(--card-background-color);
+}
+.bs-accordion-header {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 500;
+}
+.bs-accordion-content {
+    padding: 0 1rem 1rem 1rem;
+    border-top: 1px solid var(--border-color);
+}
+.bs-accordion-item {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--secondary-hover-color);
+}
+.bs-accordion-item:last-child {
+    border-bottom: none;
+}
+.bs-accordion-subheader {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+.bs-accordion-text {
+    padding: 0.5rem 0.5rem 0.5rem 1.5rem;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--text-light-color);
+    white-space: pre-wrap;
+}

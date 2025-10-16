@@ -1,0 +1,60 @@
+/* --- UserManagement Specific --- */
+.user-management-container .subtitle {
+    margin-bottom: 2rem;
+}
+
+.user-form-container {
+    background-color: #fafbfc;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.user-form-container h3,
+.user-list-container h3 {
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+.user-form-container .form-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    align-items: end;
+}
+.user-form-container .button-group {
+    justify-content: flex-start;
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+
+.user-list-container {
+    margin-top: 2rem;
+}
+
+.user-list-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+}
+
+.user-list-table th,
+.user-list-table td {
+    padding: 0.85rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.user-list-table th {
+    background-color: var(--secondary-color);
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.user-list-table tbody tr:hover {
+    background-color: #f4f5f7;
+}
+
+.user-list-table td:nth-child(3) {
+    font-style: italic;
+    color: var(--text-light-color);
+}
