@@ -6,14 +6,14 @@ import { ErrorBoundary } from 'react-error-boundary';
 
 import './index.css';
 
-import { supabase } from '../supabaseClient';
-import { User, Project, UserRole, RecentItem } from '../types';
-import { DataProvider } from '../contexts/DataProvider';
-import { useAppContext } from '../contexts/AppContext';
-import { loadAndApplyInitialAppearance } from '../utils';
-import { useProjectRealtimeData } from '../hooks/useProjectRealtimeData';
-import { USER_ROLES, VIEW_LABELS, SUBVIEW_LABELS } from '../constants';
-import { useRecentlyViewed } from '../hooks/useRecentlyViewed';
+import { supabase } from './supabaseClient';
+import { User, Project, RecentItem } from './types';
+import { DataProvider } from './contexts/DataProvider';
+import { useAppContext } from './contexts/AppContext';
+import { loadAndApplyInitialAppearance } from './utils';
+import { useProjectRealtimeData } from './hooks/useProjectRealtimeData';
+import { VIEW_LABELS, SUBVIEW_LABELS, USER_ROLES } from './constants';
+import { useRecentlyViewed } from './hooks/useRecentlyViewed';
 
 // Components
 import LoginScreen from './components/LoginScreen/LoginScreen';
